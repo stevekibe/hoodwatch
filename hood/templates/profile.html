@@ -1,0 +1,46 @@
+{%extends 'base.html' %}
+{% load static%}
+
+{% block styles%}
+{{block.super}}
+<link href="https://fonts.googleapis.com/css?family=Cherry+Swash|Lilita+One|Titan+One" rel="stylesheet"> 
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="header">
+<center>
+
+<h2 class="name">{{user.username}}</h2>
+</center>
+    {% if user.join %}
+    <p class="detail">Neighbourhood name: {{user.join.hood.name}}</p>
+    <p class="detail">Location: {{user.join.hood.location}}</p>
+    {% if biz %}
+    <p class="detail">Your businesses:</p>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+        {% for business in business %}
+            <td>{{biz.name}}</td>
+            <td>{{biz.description}}</td>
+            <td>{{biz.email}}</td>
+                       
+        </tr>
+        {% endfor %}
+    </table>
+              
+    {% endif %}
+    {%else%}
+    <center>
+    <p class="detail">You haven't joined a neighbourhood yet</p>   
+    </center>
+    {% endif %}
+</div>
+
+{% endblock%}
