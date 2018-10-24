@@ -1,0 +1,42 @@
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color:whitesmoke; border-radius:1px;">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+      <a class="navbar-brand" href="/">  <span class="glyphicon glyphicon-home"></span> Hoody</a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+  
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav nav-pills" style="font-weight:bolder;">
+          {% if user.is_authenticated %}
+            <li><a href="{url 'createhood'}"><span class="glyphicon glyphicon-upload"></span> Create Neighbourhood</a></li>
+            <li><a href="/user/{{user.id}}"><span class="glyphicon glyphicon-user"></span> View details</a></li>
+            <li><a href="/exithood/{{user.join.hood_id}}" >Change neighbourhood</a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-logout"></span>Logout</a></li>
+          {% endif %}
+        </ul>
+        <form class="navbar-form navbar-right" role="search" action="">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="&#xF002;  Search project by title" name="title" style="font-family:FontAwesome;text-align:center;">
+          </div>
+        </form>
+      </div>
+    </div>
+    
+  </nav>
+  
+  
+  <style>
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+   
+   @import url('https://fonts.googleapis.com/css?family=Niramit');
+   nav{
+     font-family: 'Niramit', sans-serif;
+     font-size: 18px;
+   }
+    </style>
