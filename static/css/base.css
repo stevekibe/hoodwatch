@@ -1,0 +1,9 @@
+body{
+    background-image: url("/static/img/bg.jpg"); 
+    background-blend-mode: overlay;
+    background-attachment: fixed;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-color: rgba(  0, 0, 0 ,0.3);
+    
+}

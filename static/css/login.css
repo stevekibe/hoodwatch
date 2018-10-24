@@ -1,0 +1,11 @@
+.panel{
+
+    border-radius: 20px;
+    border-color: rosybrown;
+    margin-top: 50px;
+
+   
+    }
+    .panel-heading{
+        border-radius: 20px;  
+    }
