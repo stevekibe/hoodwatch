@@ -1,0 +1,79 @@
+{%extends 'base.html' %}
+{% load static%}
+
+
+{% block styles%}
+{{block.super}}
+<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Concert+One|Overlock" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/hood.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid">
+    <div class="header">
+        <h2 class="head">Welcome {{hood.name}} resident</h2><hr>
+        <h4 class="descriptiontitle">Description</h4><br>
+        <p class="description">{{hood.description}}</p><br>
+        <h4 class="descriptiontitle">Contact Information</h4><br>
+        <p class="description">Police :&nbsp;&nbsp;&nbsp;{{hood.police}} </p>
+        <p class="description">Health :&nbsp;&nbsp;&nbsp;{{hood.health}} </p>
+        <br>
+        <center>
+            <a href="/exithood/{{hood.id}}" class="btn btn-warning"> Exit Neighbourhood </a>
+        </center>
+    </div>
+    <br><br><br>
+    <div class="header">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#biz">View posts </a></li>
+            <li><a data-toggle="tab" href="#tech">View Businesses</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="biz">
+                <a href="{%url 'createpost'%}" class="btn btn-success btn btn-sm"><span class="glyphicon glyphicon-plus">Create post</span></a>
+                {% if posts %}
+                {% for post in posts %}
+                <ul>
+                    <li>{{post.body}}</li>
+                </ul>
+                {% endfor %}
+                {%else%}
+                <center>
+                    <p>There are no posts yet</p>
+                </center>
+                {% endif %}
+
+            </div>
+            <div class="tab-pane fade" id="tech">
+
+                <a href="{%url 'createbusiness'%}" class="btn btn-success btn btn-sm"><span class="glyphicon glyphicon-plus">Create business</span></a>
+                {% if business %}
+               <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Email</th>
+                    </tr>
+                    <tr>
+                    {% for business in business %}
+                        <td>{{biz.name}}</td>
+                        <td>{{biz.description}}</td>
+                        <td>{{biz.email}}</td>
+                       
+                    </tr>
+                    {% endfor %}
+                </table>
+              
+                {%else%}
+                <center>
+                    <p>There are no listed businesses yet</p>
+                </center>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}
